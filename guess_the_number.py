@@ -42,7 +42,7 @@ template = '''
 
 @app.route('/', methods=['GET', 'POST'])
 def game():
-    global attempts
+    global target_number, attempts
     message = f"I'm thinking of a number between {lower_bound} and {upper_bound}. Can you guess what it is?"
 
     if request.method == 'POST':

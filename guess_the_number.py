@@ -16,7 +16,7 @@ attempts = 0
 # Maximum number of attempts
 max_attempts = 10
 
-# HTML template
+# HTML template with CSS and JavaScript for animation
 template = '''
 <!doctype html>
 <html lang="en">
@@ -24,13 +24,78 @@ template = '''
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Guess the Number Game</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f8ff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 2s;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        font-size: 18px;
+      }
+      form {
+        margin-top: 20px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        transition: all 0.3s;
+      }
+      input[type="text"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .message {
+        margin-top: 20px;
+        font-size: 20px;
+        animation: slideIn 1s;
+      }
+      @keyframes slideIn {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+    </style>
   </head>
   <body>
-    <div>
+    <div class="container">
       <h1>Guess the Number Game</h1>
       <p>{{ message }}</p>
       <form method="POST">
-        <label for="guess">Enter your guess:</label>
         <input type="text" id="guess" name="guess" required>
         <button type="submit">Submit</button>
       </form>
